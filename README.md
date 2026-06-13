@@ -78,10 +78,11 @@ ECB mode does not use an IV.
 ### 1. Install dependencies
 ```bash
 pip install pycryptodome
+```
 ### 2. Run the program
 ```bash
 python main.py
-
+```
 ## Project Structure
 AES-Cipher/
 ├── main.py
