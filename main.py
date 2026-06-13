@@ -1,5 +1,7 @@
 from tkinter import *
 from aes_util import encryptText, decryptText
+from tkinter import filedialog
+
 
 window = Tk()
 window.geometry("420x420")
@@ -21,26 +23,41 @@ label.pack()
 def click():
 
     if messageT.get() == "" or key.get() == "":
-        outputWindow.config(text="Enter message and key")
+        outputWindow.delete("1.0", END)
+        outputWindow.insert("1.0", "Enter message and key")
         return
 
 
     if operationBtn.get() == 0:
         result = encryptText(messageT.get(), key.get(), mode.get(), keySize.get())
-        outputWindow.config(text=result)
-        print(result)
     else:
         result = decryptText(messageT.get(), key.get(), mode.get(), keySize.get())
-        outputWindow.config(text=result)
-        print(result)
 
+    outputWindow.delete("1.0", END)
+    outputWindow.insert("1.0", result)
 
 
 
 def delete():
     messageT.delete(0, END)
     key.delete(0, END)
-    outputWindow.config(text=" ")
+    outputWindow.delete("1.0", END)
+
+def open_file():
+    filepath = filedialog.askopenfilename(filetypes=[("Text File", "*.txt")])
+    if filepath:
+        with open(filepath, "r", encoding="utf-8") as file:
+            file_msg = file.read()
+        messageT.delete(0, END)
+        messageT.insert(0, file_msg)
+
+
+def save_file():
+    filepath = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Text File", "*.txt")])
+    if filepath:
+        file = open(filepath, "w", encoding="utf-8")
+        file.write(outputWindow.get("1.0", END).strip())
+        file.close()
 
 
 operation = ["Encrypt", "Decrypt"]
@@ -84,6 +101,21 @@ key = Entry(window,
             fg="black",
             bg="#FF00FF")
 key.pack()
+####### OPEN
+openBtn = Button(window,text="OPEN", command=open_file,
+                 font=('Arial', 7, 'bold'),
+                 fg="#FF00FF",
+                 bg="black",
+                 activeforeground="#FF00FF")
+openBtn.pack()
+####### SAVE
+saveBtn = Button(window,text="SAVE", command=save_file,
+                 font=('Arial', 7, 'bold'),
+                 fg="#FF00FF",
+                 bg="black",
+                 activeforeground="#FF00FF")
+saveBtn.pack()
+####### GO
 button = Button(window,
                 text="GO!",
                  command=click,
@@ -92,6 +124,9 @@ button = Button(window,
                  bg="black",
                  activeforeground="#FF00FF")
 button.pack()
+
+
+
 
 deleteBtn = Button(window,
                    text="Clear all",
@@ -102,18 +137,12 @@ deleteBtn = Button(window,
                    activeforeground="#FF00FF")
 deleteBtn.pack()
 
-outputWindow = Label(window,
-                     text=" ",
+outputWindow = Text(window,
                      font=('Arial', 15, 'bold'),
                      fg="#FF00FF",
                      bg="black",)
+
 outputWindow.pack()
-
-
-
-
-
-
 
 
 window.mainloop()

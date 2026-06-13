@@ -5,11 +5,14 @@ from Crypto.Random import get_random_bytes
 from Crypto.Util.Padding import pad, unpad
 
 def deriveKey(secretKey, keySize):
+
     keyHash=hashlib.sha256(secretKey.encode("utf-8")).digest()
 
     if keySize == "128 bits":
+        keyHash=hashlib.sha256(secretKey.encode("utf-8")).digest()
         return keyHash[:16]
     elif keySize == "192 bits":
+        keyHash=hashlib.sha256(secretKey.encode("utf-8")).digest()
         return keyHash[:24]
     elif keySize == "256 bits":
         return keyHash[:32]
