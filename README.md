@@ -84,6 +84,7 @@ pip install pycryptodome
 python main.py
 ```
 ## Project Structure
+```bash
 AES-Cipher/
 ├── main.py
 ├── aes_util.py
@@ -91,8 +92,10 @@ AES-Cipher/
 ├── icon.png
 ├── .gitignore
 └── README.md
+```
 
 ##Example Usage
+
 ### 1. Enter a plaintext message
 ### 2. Enter a secret key
 ### 3. Select AES mode
