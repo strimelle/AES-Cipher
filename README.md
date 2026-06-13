@@ -94,16 +94,16 @@ AES-Cipher/
 └── README.md
 ```
 
-##Example Usage
+## Example Usage
 
-### 1. Enter a plaintext message
-### 2. Enter a secret key
-### 3. Select AES mode
-### 4. Select key size
-### 5. Choose Encrypt
-### 6. Press GO!
-### 7. Copy the encrypted text
-### 8. Choose Decrypt
-### 9. Paste the encrypted text
-### 10. Enter the same key, mode, and key size
-### 11. Press GO! to get the original text back
+   1. Enter a plaintext message
+   2. Enter a secret key
+   3. Select AES mode
+   4. Select key size
+   5. Choose Encrypt
+   6. Press GO!
+   7. Copy the encrypted text
+   8. Choose Decrypt
+   9. Paste the encrypted text
+   10. Enter the same key, mode, and key size
+   11. Press GO! to get the original text back
